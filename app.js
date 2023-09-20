@@ -128,6 +128,10 @@ function hasGetUserMedia() {
 var children = [];
 let results = [];
 let newArr=[]
+
+const btnFront = document.querySelector('#btn-front');
+const btnBack = document.querySelector('#btn-back');
+
 // If webcam supported, add event listener to button for when user
 // wants to activate it.
 if (hasGetUserMedia()) {
@@ -146,28 +150,41 @@ async function enableCam(event) {
   enableWebcamButton.classList.add("removed");
   // getUsermedia parameters
   let front = false;
-  const data = document.getElementById("flip-button");
-  data.onclick = () => {
-    front = !front;
-  };
-  const constraints = {
-    video: {
-        facingMode: front ? "user" : "environment",
-      },
-  };
+  let stream;
+  const capture = async facingMode => {
+    const constraints ={
+        video: {
+            facingMode:  front ? "user" : "environment",
+          },
+    }
 
 
+  
   // Activate the webcam stream.
-  navigator.mediaDevices
-    .getUserMedia(constraints)
-    .then(function (stream) {
-      video.srcObject = stream;
-      video.addEventListener("loadeddata", predictWebcam);
-    })
-    .catch((err) => {
-      console.error(err);
-      /* handle the error */
-    });
+  try{
+    if(stream){
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+    }
+    stream = await navigator.mediaDevices.getUserMedia(constraints);
+}catch{(err) => {
+        console.error(err);
+        /* handle the error */
+      }};
+        video.srcObject = null;
+        video.srcObject = stream;
+        video.play();
+        video.addEventListener("loadeddata", predictWebcam);
+   }
+
+   btnBack.addEventListener('click', () => {
+    capture('environment');
+  });
+
+  btnFront.addEventListener('click', () => {
+    capture('user');
+  });
+
 }
 let lastVideoTime = -1;
 async function predictWebcam() {
