@@ -145,9 +145,18 @@ async function enableCam(event) {
   // Hide the button.
   enableWebcamButton.classList.add("removed");
   // getUsermedia parameters
-  const constraints = {
-    video: true,
+  let front = false;
+  const data = document.getElementById("flip-button");
+  data.onclick = () => {
+    front = !front;
   };
+  const constraints = {
+    video: {
+        facingMode: front ? "user" : "environment",
+      },
+  };
+
+
   // Activate the webcam stream.
   navigator.mediaDevices
     .getUserMedia(constraints)

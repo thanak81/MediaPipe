@@ -129,3 +129,12 @@ video{
     border: 1px solid red;
     padding: 50px;
 }
+
+#flip-button{
+  background-color: #007f8b;
+  color: white;
+  padding: 5px;
+  display: inline;
+  font-weight: bold;
+  border-radius: 10px;
+}
