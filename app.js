@@ -149,12 +149,11 @@ async function enableCam(event) {
   // Hide the button.
   enableWebcamButton.classList.add("removed");
   // getUsermedia parameters
-  let front = false;
   let stream;
   const capture = async facingMode => {
     const constraints ={
         video: {
-            facingMode:  front ? "user" : "environment",
+            facingMode
           },
     }
 
