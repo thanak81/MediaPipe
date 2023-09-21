@@ -21,8 +21,11 @@ body {
   color: #3d3d3d;
   --mdc-theme-primary: #007f8b;
   --mdc-theme-on-primary: #f1f3f4;
+  box-sizing: border-box;
 }
-
+*{
+  font-family: Arial;
+}
 h1 {
   color: #007f8b;
 }
@@ -56,7 +59,7 @@ section {
   opacity: 0.2;
 }
 
-.videoView,
+/* .videoView,
 .detectOnClick {
   position: relative;
   float: left;
@@ -64,12 +67,22 @@ section {
   margin: 2% 1%;
   cursor: pointer;
   border: 1px solid black;
+} */
+.videoView{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  float: left;
+  cursor: pointer;
+
+}
+video{
+    height: 80vh;
+    object-fit: initial;
+  width: 400px;
+  border: 1px solid black;
 }
 
-video{
-    height: 300px;
-    width: 280px;
-}
 .my-card-content {
   padding: 16px;
 }
@@ -89,6 +102,7 @@ video{
 }
 
 .videoView p {
+  text-align: center;
   position: absolute;
   padding-bottom: 5px;
   padding-top: 5px;
@@ -97,7 +111,7 @@ video{
   border: 1px dashed rgba(255, 255, 255, 0.7);
   z-index: 2;
   font-size: 12px;
-  margin: 0;
+  margin-top: -10px;
 
 }
 
@@ -125,14 +139,50 @@ video{
     justify-content: space-around;
 }
 
-#results{
+/* #results{
     border: 1px solid red;
     padding: 50px;
+} */
+
+.results{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.results-card{
+  padding: 25px;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  text-transform:capitalize;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-
-
-button {
-  width: 60px;
-  margin-right: 20px;
+.results-card a{
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 10px;
+  font-size: 12px;
+  background-color: black;
+}
+.results-card a:hover{
+  color: blue;
+}
+.detected-items{
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.button-webcam{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.btn-webcam{
+  padding: 5px 15px;
 }
