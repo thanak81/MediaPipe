@@ -36,6 +36,7 @@ let newArr=[]
 
 const btnFront = document.querySelector('#btn-front');
 const btnBack = document.querySelector('#btn-back');
+const btnStop = document.querySelector("#btn-stop");
 
 // If webcam supported, add event listener to button for when user
 // wants to activate it.
@@ -79,11 +80,20 @@ async function enableCam(event) {
 
    btnBack.addEventListener('click', () => {
     capture('environment');
+    btnBack.classList.add("removed")
   });
 
   btnFront.addEventListener('click', () => {
     capture('user');
   });
+  btnStop.addEventListener("click",()=>{
+    if(stream){
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
+  }else{
+    console.log("Webcam is alredy closed")
+  }
+  })
 
 }
 let lastVideoTime = -1;

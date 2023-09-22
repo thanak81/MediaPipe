@@ -17,7 +17,6 @@ limitations under the License. */
 @include card.core-styles;
 body {
   font-family: roboto;
-  margin: 2em;
   color: #3d3d3d;
   --mdc-theme-primary: #007f8b;
   --mdc-theme-on-primary: #f1f3f4;
@@ -79,8 +78,9 @@ section {
 video{
     height: 80vh;
     object-fit: initial;
-  width: 400px;
   border: 1px solid black;
+    width: 430px;
+    box-sizing: border-box;
 }
 
 .my-card-content {
@@ -122,17 +122,6 @@ video{
   position: absolute;
 }
 
-.detectOnClick {
-  z-index: 0;
-}
-
-.detectOnClick img {
-  width: 100%;
-}
-.displayText{
-    color: blue;
-    font-weight: bold;
-    object-position: right top;}
 
 .video-content{
     border: 1px solid black;
