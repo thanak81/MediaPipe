@@ -78,6 +78,7 @@ async function enableCam(event) {
         video.addEventListener("loadeddata", predictWebcam);
    }
 
+   
    btnBack.addEventListener('click', () => {
     capture('environment');
     btnBack.classList.add("removed")

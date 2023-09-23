@@ -81,6 +81,8 @@ video{
   border: 1px solid black;
     width: 430px;
     box-sizing: border-box;
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .my-card-content {
